@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-height: 56px;
+    --virtual-keyboard-max-width: 484px;
+
+    --font-size-xs: 0.8rem;
+    --font-size-sm: 0.9rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.2rem;
+    --font-size-2xl: 1.4rem;
+    --font-size-3xl: 1.5rem;
+    --font-size-4xl: 1.8rem;
+    --font-size-5xl: 2rem;
+    --font-size-6xl: 2.4rem;
+    --font-size-7xl: 2.8rem;
+    --font-size-8xl: 3rem;
+    --font-size-9xl: 4rem;
+
+    --black: 0 0% 0%;
+    --dark-gray: 0 0% 25%;
+    --gray: 0 0% 50%;
+    --light-gray: 0 0% 85%;
+    --white: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 18.6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18.6%;
+
+    --primary: 33 27.3% 74.9%;
+    --primary-foreground: 33 27.3% 25.1%;
+
+    --secondary: 33 11.1% 71.8%;
+    --secondary-foreground: 33 11.1% 28.2%;
+
+    --muted: 33 15.8% 89.2%;
+    --muted-foreground: 24 13.9% 47.1%;
+
+    --accent: 33 40% 60%;
+    --accent-foreground: 24 24% 91.4%;
+
+    --destructive: 8 34.3% 46.5%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 33 11.8% 88.2%;
+    --input: 33 11.8% 88.2%;
+
+    --background-default: var(--white);
+    --background-primary: var(--primary);
+    --background-foreground: var(--black);
+
+    --foreground-default: var(--black);
+    --foreground-primary: var(--primary-foreground);
+    --foreground-foreground: var(--white);
+
+    --ring: var(--primary);
+
+    --radius: 0.5rem;
+
+    --chart-1: 18 35.3% 50.6%;
+    --chart-2: 95 21.2% 49.6%;
+    --chart-3: 42 23.1% 38.4%;
+    --chart-4: 38 34.3% 64.7%;
+    --chart-5: 33 26.4% 80.2%;
+  }
+
+  .dark {
+    --black: 0 0% 100%;
+    --dark-gray: 0 0% 75%;
+    --gray: 0 0% 50%;
+    --light-gray: 0 0% 15%;
+    --white: 0 0% 0%;
+
+    --card: 0 0% 18.6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 18.6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 33 27.3% 74.9%;
+    --primary-foreground: 33 27.3% 25.1%;
+
+    --secondary: 33 11.1% 28.2%;
+    --secondary-foreground: 33 11.1% 71.8%;
+
+    --muted: 33 15.8% 20%;
+    --muted-foreground: 24 13.9% 80%;
+
+    --accent: 33 40% 60%;
+    --accent-foreground: 24 24% 91.4%;
+
+    --destructive: 8 34.3% 53.5%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+
+    --background-default: var(--white);
+    --background-primary: var(--primary);
+    --background-foreground: var(--white);
+
+    --foreground-default: var(--black);
+    --foreground-primary: var(--primary-foreground);
+    --foreground-foreground: var(--black);
+
+    --ring: var(--primary);
+
+    --chart-1: 18 35.3% 49.4%;
+    --chart-2: 95 21.2% 50.4%;
+    --chart-3: 42 23.1% 61.6%;
+    --chart-4: 38 34.3% 35.3%;
+    --chart-5: 33 26.4% 19.8%;
+  }
+}
+
+* {
+  @apply ring-offset-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-transparent;
+}
