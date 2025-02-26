@@ -1,1 +1,1 @@
-lts/*
+echo "20" > .nvmrc
