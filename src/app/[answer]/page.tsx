@@ -9,6 +9,8 @@ import ResultDialogContainer from "@/component/result-dialog/_result-dialog-cont
 import { Container } from "@/component/ui/container";
 import { SITE_URL } from "@/script/constant/meta";
 
+export const runtime = "edge";
+
 const getDecryptedAnswer = async (
   cipherText: string
 ): Promise<string | null> => {
@@ -26,7 +28,9 @@ const getDecryptedAnswer = async (
       throw new Error("Failed to decrypt answer");
     }
 
-    const { data } = await res.json();
+    const { data } = (await res.json()) as {
+      data: { decryptedAnswer: string };
+    };
     return data.decryptedAnswer; // 복호화된 답변 반환
   } catch (error) {
     console.error("Error fetching decrypted answer:", error);

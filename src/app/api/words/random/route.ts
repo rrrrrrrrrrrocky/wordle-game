@@ -8,6 +8,9 @@ import { DictionaryDto } from "@/script/dto/dictionary-dto/dictionary-dto";
 import { InternalDto } from "@/script/dto/internal-dto/internal-dto";
 import { RandomWordDto } from "@/script/dto/random-word-dto/random-word-dto";
 import { encryptWord } from "@/script/util/common-util";
+
+export const runtime = "edge";
+
 export async function GET(
   req: NextRequest
 ): Promise<

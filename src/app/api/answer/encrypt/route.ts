@@ -4,6 +4,8 @@ import { WORD_LENGTH } from "@/script/constant/game";
 import { InternalDto } from "@/script/dto/internal-dto/internal-dto";
 import { encryptWord } from "@/script/util/common-util";
 
+export const runtime = "edge";
+
 export async function POST(
   req: NextRequest
 ): Promise<
@@ -12,7 +14,7 @@ export async function POST(
   >
 > {
   const SECRET_KEY = process.env.CRYPTO_SECRET_KEY;
-  const body = await req.json();
+  const body: InternalDto.Request._PostEncryptAnswer = await req.json();
 
   if (!body.originalAnswer || body.originalAnswer.length < WORD_LENGTH) {
     return NextResponse.json(

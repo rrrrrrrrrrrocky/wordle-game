@@ -1,12 +1,23 @@
 import rrrrrrrrrrr from "@rrrrrrrrrrr/eslint-config";
 import reactQuery from "@tanstack/eslint-plugin-query";
+import nextOnPages from "eslint-plugin-next-on-pages";
 import tailwind from "eslint-plugin-tailwindcss";
+
+const cloudflareNextOnPages = [
+  {
+    plugins: {
+      // TODO: 동작안하는것 확인
+      "next-on-pages": nextOnPages,
+    },
+  },
+];
 
 const eslintConfig = [
   ...rrrrrrrrrrr.configs.typescript,
   ...rrrrrrrrrrr.configs.next,
   ...tailwind.configs["flat/recommended"],
   ...reactQuery.configs["flat/recommended"],
+  ...cloudflareNextOnPages,
   {
     ignores: ["*.cjs", "node_modules", "dist", ".next", ".github"],
   },
