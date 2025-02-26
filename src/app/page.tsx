@@ -10,7 +10,7 @@ import { Typography } from "@/component/ui/typography";
 
 const Home = async () => {
   return (
-    <Container className="container-center">
+    <Container className="p-4 container-center">
       <Logo className="size-16" />
       <Typography className="break-all" component="h2" variant="h1">
         Wordle!
