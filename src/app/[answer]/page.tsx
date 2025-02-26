@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -7,7 +8,6 @@ import InitializeGameSettingProvider from "@/component/_common/initialize-game-s
 import VirtualKeyboardContainer from "@/component/_common/virtual-keyboard/_virtual-keyboard-container";
 import ResultDialogContainer from "@/component/result-dialog/_result-dialog-container";
 import { Container } from "@/component/ui/container";
-import { SITE_URL } from "@/script/constant/meta";
 
 export const runtime = "edge";
 
@@ -15,7 +15,11 @@ const getDecryptedAnswer = async (
   cipherText: string
 ): Promise<string | null> => {
   try {
-    const res = await fetch(`${SITE_URL}/api/answer/decrypt`, {
+    const headersList = await headers();
+    const host = headersList.get("host"); // 현재 요청된 도메인 (예: example.com)
+    const protocol = headersList.get("x-forwarded-proto") || "http"; // Cloudflare/Vercel은 'https'
+    const serverUrl = `${protocol}://${host}`;
+    const res = await fetch(`${serverUrl}/api/answer/decrypt`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
