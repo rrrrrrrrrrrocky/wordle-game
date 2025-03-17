@@ -1,5 +1,7 @@
 # 프로젝트 설명
 
+- 운영 페이지: https://game.rrrrrrrrrrr.xyz/
+
 ## 기술 스택
 
 - 메인 프레임워크: Next.js (App Router 기반)
