@@ -59,6 +59,8 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const isProd = process.env.NODE_ENV === "production";
+
   const header = useMemo(() => <HeaderContainer />, []);
 
   return (
@@ -66,16 +68,73 @@ const RootLayout = ({
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <meta content="no-cache" httpEquiv="Pragma" />
         <meta
           content="no-cache, no-store, must-revalidate"
-          httpEquiv="cache-control"
+          httpEquiv="Cache-Control"
         />
-        <meta content="#000000" name="msapplication-TileColor" />
-        <meta content="#000" name="theme-color" />
+        <meta content="no-cache" httpEquiv="Pragma" />
+        <meta content="0" httpEquiv="Expires" />
+        <meta content="#ffffff" name="msapplication-TileColor" />
+        {/* Google Tag Manager (ga는 gtm 컨테이너에서 설치, gtag대신 dataLayer 사용) */}
+        {isProd && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-5RG9SV44');
+              `,
+            }}
+          />
+        )}
+        {isProd && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "qv778zdasv");
+              `,
+            }}
+            id="clarity-script"
+          />
+        )}
+        <link
+          href="/meta/apple-touch-icon.png"
+          rel="apple-touch-icon"
+          sizes="180x180"
+        />
+        <link
+          href="/meta/favicon-16x16.png"
+          rel="icon"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          href="/meta/favicon-32x32.png"
+          rel="icon"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link href="/meta/favicon.ico" rel="shortcut icon" />
       </head>
       <body
         className={`${notoSans.className} relative flex min-h-screen flex-col bg-background antialiased`}>
+        {isProd && (
+          <noscript>
+            <iframe
+              className="invisible hidden"
+              height="0"
+              src="https://www.googletagmanager.com/ns.html?id=GTM-5RG9SV44"
+              width="0"
+            />
+          </noscript>
+        )}
+
         <ClientProvider>
           {header}
 

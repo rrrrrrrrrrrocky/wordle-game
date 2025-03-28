@@ -109,6 +109,7 @@ const ResultDialogContainer = () => {
             <DialogClose asChild>
               <Button
                 className="w-full"
+                data-gtm-id="result-dialog:close"
                 type="button"
                 variant="secondary"
                 onClick={onClose}>

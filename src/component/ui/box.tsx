@@ -5,7 +5,7 @@ import { cn } from "@/script/util/ui-utils";
 
 type ReactLayoutTagName = Pick<
   React.JSX.IntrinsicElements,
-  "div" | "section" | "article" | "ul" | "li" | "button" | "form"
+  "div" | "section" | "article" | "ul" | "li" | "form"
 >;
 
 type ReactTag = keyof ReactLayoutTagName | React.JSXElementConstructor<unknown>;

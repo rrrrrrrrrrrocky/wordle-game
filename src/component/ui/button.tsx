@@ -28,6 +28,7 @@ const buttonVariants = cva(
         sm: "min-h-9 rounded-md px-3 py-1 text-xs",
         lg: "min-h-11 rounded-md px-8 py-2 text-md",
         icon: "size-10",
+        "none-style": "",
       },
     },
     defaultVariants: {
@@ -41,6 +42,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
+  "data-gtm-id": string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -49,7 +51,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(
+          variant === "none-style"
+            ? className
+            : buttonVariants({
+                variant,
+                size,
+                className,
+              })
+        )}
+        type="button"
         {...props}
       />
     );

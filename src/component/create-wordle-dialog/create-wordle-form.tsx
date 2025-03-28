@@ -36,6 +36,7 @@ const CreateWordleForm = forwardRef<HTMLInputElement, Props>(
           </Box>
           <Button
             className="px-3"
+            data-gtm-id="create-wordle-dialog:create-wordle"
             disabled={isPending}
             form="valid-word-form"
             type="submit">

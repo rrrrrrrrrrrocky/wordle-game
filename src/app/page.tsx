@@ -22,7 +22,7 @@ const Home = async () => {
       </Box>
 
       <Box className="flex items-center justify-center gap-4">
-        <Button variant="outline" asChild>
+        <Button data-gtm-id="home:get-started" variant="outline" asChild>
           <Link href="/example">시작하기</Link>
         </Button>
         <CreateWordleDialogContainer />

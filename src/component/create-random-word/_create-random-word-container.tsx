@@ -26,7 +26,10 @@ const CreateRandomWordContainer = () => {
     }
   };
   return (
-    <Button disabled={isPending} onClick={onCreateRandomWord}>
+    <Button
+      data-gtm-id="create-random-word:create-random-word"
+      disabled={isPending}
+      onClick={onCreateRandomWord}>
       랜덤 단어로 게임하기
     </Button>
   );

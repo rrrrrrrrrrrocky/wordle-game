@@ -46,6 +46,7 @@ const CopyUrlSection = ({ newWordleUrl }: Props) => {
         </div>
         <Button
           className="px-3"
+          data-gtm-id="create-wordle:copy-url"
           size="sm"
           variant={copied ? "black" : "outline"}
           onClick={onCopyUrl}>

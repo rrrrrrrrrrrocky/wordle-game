@@ -80,7 +80,9 @@ const CreateWordleDialogContainer = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="primary">워들 생성하기</Button>
+        <Button data-gtm-id="create-wordle:create-wordle" variant="primary">
+          워들 생성하기
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md ">
         <Box className="flex flex-col gap-8">
@@ -96,13 +98,14 @@ const CreateWordleDialogContainer = () => {
         </Box>
         <DialogFooter className="mt-4 flex flex-row-reverse gap-x-4">
           {newWordleUrl && (
-            <Button asChild>
+            <Button data-gtm-id="create-wordle:move-to-wordle" asChild>
               <Link href={newWordleUrl}>이동하기</Link>
             </Button>
           )}
           <DialogClose asChild>
             <Button
               className={cn(!newWordleUrl && "w-full")}
+              data-gtm-id="create-wordle:close"
               type="button"
               variant="secondary">
               닫기
