@@ -1,7 +1,7 @@
 import "@/resource/style/global.css";
 import "dayjs/locale/ko";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { Noto_Sans as notoSansFont } from "next/font/google";
 import { useMemo } from "react";
@@ -10,10 +10,12 @@ import HeaderContainer from "@/component/_common/header/_header-container";
 import { Container } from "@/component/ui/container";
 import { Typography } from "@/component/ui/typography";
 import {
-  EMAIL,
-  SITE_DESCRIPTION,
-  SITE_NAME,
-  SITE_OG_IMAGE_URL,
+  AUTHOR,
+  DEFAULT_OPEN_GRAPH,
+  DEFAULT_SITE_DESCRIPTION,
+  DEFAULT_SITE_KEYWORDS,
+  DEFAULT_SITE_TITLE,
+  DEFAULT_TWITTER_CARD,
   SITE_URL,
 } from "@/script/constant/meta";
 
@@ -28,26 +30,28 @@ const notoSans = notoSansFont({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: SITE_NAME,
-  description: SITE_DESCRIPTION,
-  openGraph: {
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    type: "website",
-    url: SITE_URL,
-    images: [
-      {
-        url: SITE_OG_IMAGE_URL,
-        width: 1200,
-        height: 630,
-        alt: SITE_NAME,
-      },
-    ],
-    siteName: SITE_NAME,
-    locale: "ko_KR",
-    emails: EMAIL,
-  },
+  title: DEFAULT_SITE_TITLE,
+  description: DEFAULT_SITE_DESCRIPTION,
+  authors: [{ name: AUTHOR, url: SITE_URL }],
+  creator: AUTHOR,
+  keywords: DEFAULT_SITE_KEYWORDS,
+  publisher: AUTHOR,
+  openGraph: DEFAULT_OPEN_GRAPH,
+  twitter: DEFAULT_TWITTER_CARD,
+
+  // root도메인에 등록 완료
+  // verification: {},
+  manifest: "/meta/site.webmanifest",
+  robots: "index, follow",
+  metadataBase: new URL(SITE_URL),
 };
 
 const RootLayout = ({

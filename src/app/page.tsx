@@ -17,7 +17,7 @@ const Home = async () => {
       </Typography>
       <Box className="mb-12 flex">
         <Typography className="text-typo-dark-gray" component="h3" variant="h3">
-          Get 6 chances to guess a 5-letter word.
+          6번의 기회동안 5글자의 단어를 맞춰보세요!
         </Typography>
       </Box>
 
