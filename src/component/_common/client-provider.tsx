@@ -7,6 +7,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { useReportWebVitals } from "next/web-vitals";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ReactNode } from "react";
 
@@ -42,6 +43,25 @@ const getQueryClient = () => {
 const ClientProvider = ({ children }: ClientProviderProps) => {
   const queryClient = getQueryClient();
   const { mounted } = useMount();
+
+  useReportWebVitals((metric) => {
+    if (
+      typeof window !== "undefined" &&
+      window.dataLayer &&
+      process.env.NODE_ENV === "production"
+    ) {
+      window.dataLayer.push({
+        event: "web_vitals",
+        event_category: "Web Vitals",
+        event_action: metric.name,
+        event_value: Math.round(
+          metric.name === "CLS" ? metric.value * 1000 : metric.value
+        ),
+        event_label: metric.id,
+        non_interaction: true,
+      });
+    }
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
