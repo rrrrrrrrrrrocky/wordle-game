@@ -28,7 +28,8 @@ const CreateWordleDialogContainer = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   const { handleNewWordleUrl, newWordleUrl } = useNewWordleUrl();
-  const { validateWord, encryptAnswer, isPending } = useGameController();
+  const { validateWord, encryptAnswer, isPending, resetAllState } =
+    useGameController();
 
   const showToastAndFocus = (message: string) => {
     toast({ description: message });
@@ -71,6 +72,7 @@ const CreateWordleDialogContainer = () => {
 
     // 3️⃣ 단어 암호화 및 상태 업데이트
     const encryptedAnswer = await encryptAnswer(submitWord);
+    resetAllState();
     handleNewWordleUrl(encryptedAnswer);
     toast({ description: "게임이 생성되었습니다! 👏" });
   };

@@ -5,15 +5,18 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/component/ui/button";
 import { useGetRandomWord } from "@/script/api/internal/internal-mutations";
 import { useToast } from "@/script/hook/ui/use-toast";
+import { useGameController } from "@/script/hook/use-game-controller";
 
 const CreateRandomWordContainer = () => {
   const { toast } = useToast();
   const { push } = useRouter();
   const { mutateAsync: getRandomWord, isPending } = useGetRandomWord();
+  const { resetAllState } = useGameController();
 
   const onCreateRandomWord = async () => {
     try {
       const { data } = await getRandomWord();
+      resetAllState();
       push(`/${data.encryptedAnswer}`);
     } catch (err) {
       console.error("failed create random word >>", err);
